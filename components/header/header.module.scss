@@ -1,0 +1,60 @@
+.logo {
+	text-align: center;
+	align-self: center;
+	margin: 0 10px;
+}
+.header {
+	padding: 15px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	background-color: #fff4e2;
+}
+.searchBlock {
+	margin-left: 340px;
+	width: 340px;
+	height: 45px;
+	background-color: #ffeace;
+	border-radius: 10px;
+	position: relative;
+	:focus {
+		border: 1px solid #f9b849;
+		background-color: #fff;
+		outline: 4px solid #f4d9aa;
+	}
+	:hover {
+		background-color: #fff;
+		outline: 4px solid #f4d9aa;
+	}
+	svg {
+		position: absolute;
+		top: 50%;
+		left: 3%;
+		transform: translateY(-50%);
+		opacity: 0.4;
+	}
+	input {
+		width: 100%;
+		padding: 0px 20px 0 40px;
+		height: 100%;
+		outline: 4px solid rgb(0, 0, 0, 0);
+		border: none;
+		border-radius: inherit;
+		transition: all 0.3s ease 0s;
+		background-color: inherit;
+		font-size: inherit;
+	}
+}
+.left {
+	display: flex;
+}
+.right {
+	gap: 0 15px;
+	display: flex;
+}
+
+.editButton {
+	height: 45px;
+	margin-left: 10px;
+}
