@@ -1,0 +1,16 @@
+.root {
+	background-color: rgb(0, 0, 0, 0.1);
+	:hover {
+		background-color: #fff;
+		outline: 2px solid #a5d4f8;
+	}
+	:focus {
+		div {
+			background-color: #fff;
+			outline: 2px solid #a5d4f8;
+		}
+	}
+	div {
+		transition: all 0.3s ease 0s;
+	}
+}

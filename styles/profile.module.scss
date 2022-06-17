@@ -1,0 +1,71 @@
+.avatar {
+	width: 112px;
+	height: 112px;
+	border-radius: 10px;
+	margin-bottom: 12px;
+}
+.profile {
+	padding: 20px 20px 0;
+}
+.paper {
+	padding: 20px;
+	min-width: 300px;
+	margin-bottom: 20px;
+}
+.name {
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+.wrapper {
+	position: relative;
+	margin-top: 20px;
+	display: flex;
+	gap: 20px 15px;
+}
+.input {
+	border: none;
+	padding: 0px 20px;
+	font-size: inherit;
+}
+.tabs {
+	button {
+		text-transform: capitalize;
+		font-size: 16px;
+		padding: 0;
+		margin-right: 15px;
+		min-width: max-content;
+	}
+}
+.setting {
+	color: rgb(76, 76, 92);
+	margin: 0;
+	margin-bottom: 10px;
+}
+.right {
+	align-self: flex-start;
+	display: flex;
+	align-items: center;
+	button {
+		svg {
+			margin-right: 10px;
+		}
+	}
+}
+.content {
+	display: flex;
+}
+.settingIcon {
+	margin-right: 10px;
+	cursor: pointer;
+	width: 41px;
+	height: 41px;
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid #f2f2f2;
+	box-shadow: 1px 1px 2px rgb(76, 76, 92);
+}
+.info {
+	flex-grow: 1;
+}
+.subscriptions {
+}

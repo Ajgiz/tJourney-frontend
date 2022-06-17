@@ -4,6 +4,9 @@
 	margin: 0 10px;
 }
 .header {
+	position: fixed;
+	width: 100%;
+	z-index: 1;
 	padding: 15px;
 	display: flex;
 	justify-content: space-between;
@@ -12,8 +15,8 @@
 	background-color: #fff4e2;
 }
 .searchBlock {
-	margin-left: 340px;
-	width: 340px;
+	margin-left: 230px;
+	width: 440px;
 	height: 45px;
 	background-color: #ffeace;
 	border-radius: 10px;
@@ -55,6 +58,9 @@
 }
 
 .editButton {
+	text-transform: capitalize;
+	box-shadow: none;
 	height: 45px;
+	box-shadow: 2px 2px 5px rgb(0, 0, 0, 0.1);
 	margin-left: 10px;
 }

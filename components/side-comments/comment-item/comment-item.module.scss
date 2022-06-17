@@ -1,0 +1,19 @@
+.root {
+	margin: 0px auto;
+}
+.user {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	margin-bottom: 5px;
+}
+.text {
+	width: 450px;
+	margin-bottom: 8px;
+}
+.postTitle {
+	font-weight: 600;
+}
+.avatar {
+	margin-right: 10px;
+}

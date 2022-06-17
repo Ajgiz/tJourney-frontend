@@ -1,0 +1,17 @@
+@import "../../styles/_mixin";
+.wrapper {
+	padding: 0px 30px;
+	padding-top: 85px;
+	display: flex;
+	background-color: #f2f2f2;
+}
+.content {
+	max-width: 640px;
+	width: 100%;
+	margin: 0px auto;
+}
+.contentFull {
+	max-width: 1000px;
+	width: 100%;
+	margin: 0px auto;
+}

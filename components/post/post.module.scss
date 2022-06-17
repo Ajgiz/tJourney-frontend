@@ -1,7 +1,69 @@
+@import "../../styles/mixin.scss";
 .post {
 	padding: 20px;
-	margin: 10px 0;
+	margin: 20px 0;
 	p {
 		font-size: 16px;
 	}
+	svg {
+		cursor: pointer;
+	}
+}
+
+.header {
+	@include flexCenter;
+	height: 40px;
+}
+
+.footer {
+	@include flexCenter;
+	height: 40px;
+	.right {
+		button {
+			width: 40px;
+		}
+	}
+}
+
+.left {
+	display: flex;
+	align-items: center;
+	p {
+		font-weight: 600;
+	}
+}
+.right {
+	display: flex;
+	align-items: center;
+	svg {
+		margin: 0 10px;
+	}
+}
+.author {
+	display: flex;
+	align-items: center;
+	margin-right: 20px;
+}
+.timeAdded {
+	color: #595959;
+	margin-left: 10px;
+}
+.personAddIcon {
+	color: blue;
+}
+.arrowUp {
+	transform: rotate(180deg);
+}
+.comments {
+	font-weight: 500;
+	font-size: 19px;
+	cursor: pointer;
+}
+.content {
+}
+.title {
+	margin-bottom: 15px;
+}
+.text {
+	margin-bottom: 15px;
 }

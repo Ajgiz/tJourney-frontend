@@ -14,6 +14,7 @@ import {
 	Notifications,
 	Menu,
 } from "@mui/icons-material";
+import Link from "next/link";
 export const Header: React.FC = () => {
 	return (
 		<Paper classes={{ root: styles.header }} elevation={0}>
@@ -26,8 +27,8 @@ export const Header: React.FC = () => {
 					<Search />
 					<input placeholder="Поиск" />
 				</div>
-				<Button variant="contained" classes={{ root: styles.editButton }}>
-					<Edit />
+				<Button color='secondary' variant="contained" classes={{ root: styles.editButton }}>
+					Новая запись
 				</Button>
 			</div>
 			<div className={styles.right}>
@@ -37,7 +38,11 @@ export const Header: React.FC = () => {
 				<IconButton>
 					<Notifications />
 				</IconButton>
-				<Avatar src="https://leonardo.osnova.io/aa08c3bd-0d34-5626-9986-7f06f5bedd24/-/scale_crop/108x108/-/format/webp/" />
+				<Link href={"#"}>
+					<a>
+						<Avatar src="https://leonardo.osnova.io/aa08c3bd-0d34-5626-9986-7f06f5bedd24/-/scale_crop/108x108/-/format/webp/" />
+					</a>
+				</Link>
 			</div>
 		</Paper>
 	);
