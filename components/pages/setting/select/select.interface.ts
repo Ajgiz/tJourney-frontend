@@ -1,10 +1,7 @@
+import { IOptions } from "../../components/common-interface";
+
 export interface ISelectSettingProps {
 	value: string | number;
-	values: IValues<string | number>[];
+	values: IOptions<string, string>[];
 	onChange: any;
-}
-
-export interface IValues<T> {
-	value: T;
-	label: T;
 }

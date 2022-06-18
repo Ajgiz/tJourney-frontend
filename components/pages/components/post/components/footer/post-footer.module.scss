@@ -1,0 +1,33 @@
+.left {
+	display: flex;
+	align-items: center;
+	p {
+		font-weight: 600;
+	}
+}
+.right {
+	display: flex;
+	align-items: center;
+	svg {
+		margin: 0 10px;
+	}
+}
+.comments {
+	font-weight: 500;
+	font-size: 19px;
+	cursor: pointer;
+}
+.footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 40px;
+	.right {
+		button {
+			width: 40px;
+		}
+	}
+}
+.arrowUp {
+	transform: rotate(180deg);
+}

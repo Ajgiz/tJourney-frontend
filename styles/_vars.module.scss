@@ -1,0 +1,7 @@
+$primary: black;
+$secondary: rgb(0, 0, 0, 0.2);
+
+:export {
+	primary: $primary;
+	secondary: $secondary;
+}

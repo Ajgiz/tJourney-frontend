@@ -1,0 +1,16 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 8px;
+}
+.avatar {
+	border-radius: 50%;
+}
+.bttn {
+	padding: 0;
+	transition: all 0.3s;
+	&:hover {
+		background-color: transparent;
+		color: blue;
+	}
+}

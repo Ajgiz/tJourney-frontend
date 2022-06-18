@@ -7,7 +7,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 export const News = () => {
 	return (
 		<div>
-			<Paper className={styledPost.post} elevation={0}>
+			<Paper className={styledPost.post}>
 				<div className={styles.news}>
 					<Typography variant="h6">
 						Комитет против пыток» внесли в реестр незарегистрированных

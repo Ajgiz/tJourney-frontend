@@ -7,14 +7,20 @@ export const theme = createTheme({
 		secondary: {
 			main: "#fff",
 		},
+
 		common: {
 			black: "black",
+			white: "#fff",
 		},
 	},
 	components: {
 		MuiButton: {
+			defaultProps: {
+				disableRipple: true,
+			},
 			styleOverrides: {
 				root: {
+					textTransform: "capitalize",
 					borderRadius: "10px",
 				},
 				containedSecondary: {
@@ -46,6 +52,34 @@ export const theme = createTheme({
 				},
 				rounded: {
 					borderRadius: 8,
+				},
+				root: {
+					padding: "20px",
+				},
+			},
+		},
+		MuiTab: {
+			styleOverrides: {
+				root: {
+					textTransform: "capitalize",
+					fontSize: " 16px",
+					padding: 0,
+					marginRight: "15px",
+					minWidth: "maxContent",
+				},
+			},
+		},
+		MuiMenu: {
+			styleOverrides: {
+				root: {
+					padding: 0,
+				},
+				list: {
+					padding: "5px 0",
+				},
+				paper: {
+					padding: "5px",
+					boxShadow: "2px 3px 5px black",
 				},
 			},
 		},

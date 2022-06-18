@@ -2,8 +2,8 @@ import type { NextPage } from "next";
 import { Button, MenuItem, Paper, Select, Typography } from "@mui/material";
 import styles from "../styles/home.module.scss";
 import React from "react";
-import { News } from "../components/news";
-import { Post } from "../components/post";
+import { News } from "../components/pages/components/news";
+import { Post } from "../components/pages/components/post";
 import { MainLayouts } from "../components/layouts/main-layouts";
 const Home: NextPage = () => {
 	const [newsCategory, setNewsCategory] = React.useState(

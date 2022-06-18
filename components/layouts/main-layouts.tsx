@@ -9,10 +9,11 @@ export const MainLayouts: FC<PropsWithChildren<IMainLayoutProps>> = ({
 	children,
 	contentFullWidth,
 	hideComments,
+	hideLeftMenu,
 }) => {
 	return (
 		<div className={styles.wrapper}>
-			<LeftMenu />
+			{!hideLeftMenu && <LeftMenu />}
 			<div className={contentFullWidth ? styles.contentFull : styles.content}>
 				{children}
 			</div>

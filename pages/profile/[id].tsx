@@ -4,7 +4,6 @@ import {
 	Button,
 	Paper,
 	Tab,
-	Tabs,
 	TextField,
 	Typography,
 } from "@mui/material";
@@ -15,8 +14,11 @@ import { MainLayouts } from "../../components/layouts/main-layouts";
 import styles from "../../styles/profile.module.scss";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ChatIcon from "@mui/icons-material/Chat";
-import { Post } from "../../components/post";
+import { Post } from "../../components/pages/components/post";
+import { Tabs } from "../../components/pages/components/tabs/tabs";
+import { OptionsTabsProfile } from "../../components/pages/constant/constant";
 const Profile: NextPage = () => {
+	const [tabProfile, setTabProfile] = React.useState(0);
 	return (
 		<MainLayouts contentFullWidth hideComments>
 			<Paper className={styles.profile} elevation={0}>
@@ -46,15 +48,10 @@ const Profile: NextPage = () => {
 				</div>
 				<footer className={styles.footer}>
 					<Tabs
-						className={styles.tabs}
-						value={0}
-						indicatorColor="primary"
-						textColor="inherit"
-					>
-						<Tab label="Статьи" />
-						<Tab label="Комментарии" />
-						<Tab label="Закладки" />
-					</Tabs>
+						options={OptionsTabsProfile}
+						value={tabProfile}
+						setValue={setTabProfile}
+					/>
 				</footer>
 			</Paper>
 			<div className={styles.wrapper}>
