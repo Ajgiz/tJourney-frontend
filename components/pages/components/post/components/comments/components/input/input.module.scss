@@ -1,0 +1,14 @@
+.input {
+	width: 100%;
+	border: none;
+	outline: none;
+	font-size: inherit;
+	background-color: transparent;
+	box-shadow: none;
+	resize: none;
+	overflow-y: hidden;
+	&::before,
+	&::after {
+		display: none;
+	}
+}

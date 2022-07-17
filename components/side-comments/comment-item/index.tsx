@@ -1,31 +1,31 @@
-import { Avatar } from "@mui/material";
+import { Avatar, Typography } from "@mui/material";
 import Link from "next/link";
 import React from "react";
+import { ILeftMenuCommentItemProps } from "./comment-item.interface";
 import styles from "./comment-item.module.scss";
-export const ComentItem = () => {
+export const ComentItem: React.FC<ILeftMenuCommentItemProps> = ({
+	id,
+	text,
+	user,
+	post,
+}) => {
 	return (
 		<div className={styles.root}>
 			<div className={styles.user}>
-				<Avatar
-					className={styles.avatar}
-					src={"https://www.blexar.com/avatar.png"}
-				/>
-				<Link href={"#"}>
-					<a>
-						<b>Ajgiz</b>
-					</a>
+				<Link href={`/profile/${user.id}`}>
+					<Typography
+						component="a"
+						sx={{ display: "flex", alignItems: "center", cursor: "pointer" }}
+					>
+						<Avatar className={styles.avatar} src={user.avatar} />
+						<b>{user.fullName}</b>
+					</Typography>
 				</Link>
 			</div>
-			<p className={styles.text}>
-				The index to start the search at. If the index is greater than or equal
-				to the length, -1 is returned, which means the array will not be
-				searched. If the provided index value is a negative number, it is taken
-			</p>
-			<Link href={"#"}>
+			<p className={styles.text}>{text}</p>
+			<Link href={`/news/${post.id}`}>
 				<a>
-					<span className={styles.postTitle}>
-						The first index of the element in the array
-					</span>
+					<span className={styles.postTitle}>{post.title}</span>
 				</a>
 			</Link>
 		</div>

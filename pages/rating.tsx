@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { FollowButton } from "../components/pages/rating/folow-button/follow-button";
 import { Tabs } from "../components/pages/components/tabs/tabs";
-import { OptionsTabsRating } from "../components/pages/constant/constant";
+import { OptionsTabsRating } from "../components/constant/constant";
 const Rating = () => {
 	const [tabRating, setTabRating] = React.useState(0);
 	return (

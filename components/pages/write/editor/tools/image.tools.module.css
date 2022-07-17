@@ -1,0 +1,22 @@
+.inputImageTools {
+	display: none;
+	opacity: 0;
+}
+
+.readyImage {
+}
+.labelImageTools {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 45px;
+	text-align: center;
+	background-color: rgb(212, 199, 199);
+	position: relative;
+	display: block;
+	left: 0;
+	border-radius: 5px;
+	right: 0;
+	margin: 10px 0;
+	cursor: pointer;
+}

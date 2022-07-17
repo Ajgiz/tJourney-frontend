@@ -1,11 +1,15 @@
-.input {
-	width: 100%;
+.menu {
+	padding: 10px;
+	z-index: 100;
+	ul {
+		border-radius: 5px;
+		background-color: darken($color: #fff, $amount: 1);
+	}
+}
+.menuButton {
 	border: none;
 	outline: none;
-	font-size: inherit;
-	margin-bottom: 20px;
 	background-color: transparent;
-	box-shadow: none;
-	resize: none;
-	overflow-y: hidden;
+	color: black;
+	font-size: 18px;
 }

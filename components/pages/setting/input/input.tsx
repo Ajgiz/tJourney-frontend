@@ -1,27 +1,35 @@
+import clsx from "clsx";
 import React, { FC } from "react";
 import { IInputSettingProps } from "./input.interface";
 import styles from "./input.module.scss";
-export const InputSetting: FC<IInputSettingProps> = ({
+export const CustomInput: FC<IInputSettingProps> = ({
 	placeholder,
 	onChange,
 	value,
+	inputClassName,
+	wrapperClassName,
 	type,
 }) => {
 	return (
-		<div className={type === "text" ? styles.wrapperText : styles.wrapperInput}>
+		<div
+			className={clsx(
+				type === "text" ? styles.wrapperText : styles.wrapperInput,
+				wrapperClassName
+			)}
+		>
 			{type === "text" ? (
 				<textarea
 					value={value}
 					onChange={(e) => onChange(e.target.value)}
 					placeholder={placeholder}
-					className={styles.input}
+					className={clsx(styles.input, inputClassName)}
 				/>
 			) : (
 				<input
 					value={value}
 					onChange={(e) => onChange(e.target.value)}
 					placeholder={placeholder}
-					className={styles.input}
+					className={clsx(styles.input, inputClassName)}
 				/>
 			)}
 		</div>

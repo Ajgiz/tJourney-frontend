@@ -14,9 +14,9 @@ import { MainLayouts } from "../../components/layouts/main-layouts";
 import styles from "../../styles/profile.module.scss";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ChatIcon from "@mui/icons-material/Chat";
-import { Post } from "../../components/pages/components/post";
+import { Post } from "../../components/pages/components/post/post";
 import { Tabs } from "../../components/pages/components/tabs/tabs";
-import { OptionsTabsProfile } from "../../components/pages/constant/constant";
+import { OptionsTabsProfile } from "../../components/constant/constant";
 const Profile: NextPage = () => {
 	const [tabProfile, setTabProfile] = React.useState(0);
 	return (
@@ -62,9 +62,6 @@ const Profile: NextPage = () => {
 							<input placeholder="Новая запись" className={styles.input} />
 						</Box>
 					</Paper>
-					<Post />
-					<Post />
-					<Post />
 				</div>
 				<div className={styles.subscriptions}>
 					<Paper className={styles.paper}>

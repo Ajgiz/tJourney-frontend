@@ -20,15 +20,36 @@
 		margin: 0 10px;
 	}
 }
+.authorName {
+	font-weight: 400 !important;
+	color: #595959;
+}
+.topicInfoName {
+	font-weight: 500 !important;
+}
 .author {
 	display: flex;
 	align-items: center;
 	margin-right: 20px;
+	&:hover {
+		color: blue;
+	}
+	cursor: pointer;
 }
 .timeAdded {
 	color: #595959;
 	margin-left: 10px;
 }
 .personAddIcon {
-	color: blue;
+	color: rgb(143, 143, 221);
+}
+
+.topic {
+	display: flex;
+	align-items: center;
+	margin-right: 20px;
+	&:hover {
+		color: blue;
+	}
+	cursor: pointer;
 }

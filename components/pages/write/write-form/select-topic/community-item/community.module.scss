@@ -1,0 +1,43 @@
+.container {
+	padding: 0 10px;
+	height: 45px;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	&:hover {
+		background-color: rgb(195, 195, 210);
+	}
+	margin: 10px 0;
+}
+.info {
+	padding-left: 8px;
+	p {
+		margin: 0;
+	}
+}
+.activeContainer {
+	padding: 0 10px;
+	height: 45px;
+	margin: 10px 0;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	background-color: rgb(195, 195, 210);
+}
+.subs {
+	color: gray;
+	font-size: 14px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 160px;
+}
+.name {
+	font-weight: 500;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 160px;
+}

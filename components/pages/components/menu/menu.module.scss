@@ -1,0 +1,25 @@
+.menu {
+	z-index: 100;
+	ul {
+		padding: 8px;
+		border-radius: 5px;
+		background-color: darken($color: #fff, $amount: 1);
+	}
+}
+.menuButton {
+	border: none;
+	outline: none;
+	background-color: transparent;
+	color: black;
+	font-size: 18px;
+}
+.optionMenu {
+	cursor: pointer;
+	padding: 5px;
+	&:hover {
+		background-color: darken($color: #fff, $amount: 3);
+	}
+}
+.selected {
+	background-color: darken($color: #fff, $amount: 8);
+}

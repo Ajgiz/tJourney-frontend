@@ -3,7 +3,7 @@ import React from "react";
 import { MainLayouts } from "../../components/layouts/main-layouts";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import styles from "../../styles/profile-setting.module.scss";
-import { InputSetting } from "../../components/pages/setting/input/input";
+import { CustomInput } from "../../components/pages/setting/input/input";
 import { SelectSetting } from "../../components/pages/setting/select/select";
 
 const Settings = () => {
@@ -30,7 +30,7 @@ const Settings = () => {
 				</Typography>
 				<div className={styles.block}>
 					<p className={styles.title}>Описание к блогу</p>
-					<InputSetting
+					<CustomInput
 						type="text"
 						onChange={setDescription}
 						value={description}
@@ -50,11 +50,11 @@ const Settings = () => {
 				</div>
 				<div className={styles.block}>
 					<p className={styles.title}>Отображаемое имя</p>
-					<InputSetting type="input" onChange={setName} value={name} />
+					<CustomInput type="input" onChange={setName} value={name} />
 				</div>
 				<div className={styles.block}>
 					<p className={styles.title}>Почта и пароль</p>
-					<InputSetting type="input" onChange={setPassword} value={password} />
+					<CustomInput type="input" onChange={setPassword} value={password} />
 					<Typography
 						component="span"
 						sx={{

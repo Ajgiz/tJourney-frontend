@@ -1,0 +1,18 @@
+.responseInput {
+	// margin-bottom: 50px;
+	&::placeholder {
+		color: gray;
+	}
+}
+
+.footerResponse {
+	display: flex;
+	justify-content: flex-end;
+}
+.response {
+	margin-left: 20px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	padding: 10px;
+	background-color: darken($color: #fff, $amount: 9);
+}

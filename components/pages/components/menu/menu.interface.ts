@@ -1,10 +1,13 @@
 export interface IMenuProps {
-	anchorEl: null | HTMLElement;
-	handleClose: () => void;
-	options: IOptionMenu[];
+	options?: IOptionMenu[];
+	rootClassName?: string;
+	optionClassName?: string;
+	label: any;
+	value?: string;
+	body?: any;
 }
 
-interface IOptionMenu {
+export interface IOptionMenu {
 	label: string;
 	func: () => void;
 }

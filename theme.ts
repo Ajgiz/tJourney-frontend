@@ -22,6 +22,7 @@ export const theme = createTheme({
 				root: {
 					textTransform: "capitalize",
 					borderRadius: "10px",
+					boxShadow: "none",
 				},
 				containedSecondary: {
 					backgroundColor: "white",
@@ -42,6 +43,10 @@ export const theme = createTheme({
 					paddingTop: "8px",
 					color: "white",
 					paddingBottom: "8px",
+				},
+				textSecondary: {
+					outline: "1px solid rgb(0,0,0,0.2)",
+					boxShadow: "1px 1px 1px rgb(0,0,0,0.2)",
 				},
 			},
 		},
@@ -69,6 +74,13 @@ export const theme = createTheme({
 				},
 			},
 		},
+		MuiDialog: {
+			styleOverrides: {
+				paper: {
+					boxShadow: "none",
+				},
+			},
+		},
 		MuiMenu: {
 			styleOverrides: {
 				root: {
@@ -80,6 +92,23 @@ export const theme = createTheme({
 				paper: {
 					padding: "5px",
 					boxShadow: "2px 3px 5px black",
+				},
+			},
+		},
+		MuiInput: {
+			styleOverrides: {
+				root: {
+					":focus": {
+						"&::placeholder": {
+							color: " rgb(0, 0, 0, 0.2)",
+						},
+					},
+					"&::before": {
+						display: "none",
+					},
+					"&:after": {
+						display: "none",
+					},
 				},
 			},
 		},

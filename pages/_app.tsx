@@ -9,7 +9,11 @@ import { theme } from "../theme";
 import { Header } from "../components/header";
 import "../styles/_mixin.scss";
 import Head from "next/head";
-function MyApp({ Component, pageProps }: AppProps) {
+import { wrapper } from "../redux/store";
+import { parseCookies } from "nookies";
+import { refresh } from "../redux/slices/user/user-create-async-action";
+
+function App({ Component, pageProps }: AppProps) {
 	return (
 		<>
 			<Head>
@@ -27,5 +31,27 @@ function MyApp({ Component, pageProps }: AppProps) {
 		</>
 	);
 }
+App.getInitialProps = wrapper.getInitialAppProps(
+	(store) =>
+		async ({ ctx, Component }) => {
+			const { refreshToken } = parseCookies(ctx);
+			try {
+				await store.dispatch(refresh({ ctx, token: refreshToken })).unwrap();
+			} catch (e: any) {
+				if (ctx.asPath === "/write") {
+					ctx.res?.writeHead(302, {
+						Location: "/",
+					});
+					ctx.res?.end();
+				}
+			}
 
-export default MyApp;
+			return {
+				pageProps: Component.getInitialProps
+					? await Component.getInitialProps({ ...ctx, store })
+					: {},
+			};
+		}
+);
+
+export default wrapper.withRedux(App);

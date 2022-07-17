@@ -1,0 +1,77 @@
+.output {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	width: max-content;
+	p {
+		padding-left: 10px;
+		padding-right: 5px;
+	}
+	svg {
+		position: relative;
+		top: 2px;
+	}
+}
+.container {
+	position: relative;
+	// position: relative;
+	width: 240px;
+}
+.cover {
+	position: absolute;
+	bottom: 0;
+	top: 0;
+	left: 0;
+	z-index: 500;
+	right: 0;
+}
+.dropdown {
+	position: absolute;
+	top: 60px;
+	left: 0;
+	z-index: 10000;
+	border-radius: 5px;
+	padding: 10px;
+	background-color: darken($color: #fff, $amount: 1);
+	height: 340px;
+}
+.search {
+}
+.searchBlock {
+	z-index: 10;
+	background-color: #fff;
+	top: 0;
+	left: 0;
+	position: sticky;
+	width: 100%;
+	margin-bottom: 10px;
+	outline: 1px solid rgb(123, 109, 109);
+	padding-right: 10px;
+	svg {
+		width: 30px;
+		height: 30px;
+		margin: 0 10px;
+		cursor: pointer;
+	}
+	display: flex;
+	align-items: center;
+	height: 40px;
+	border-radius: 5px;
+	input {
+		font-size: 18px;
+	}
+}
+.titleSection {
+	padding-left: 10px;
+	color: grey;
+	margin: 0;
+	margin-bottom: 5px;
+}
+.content {
+	overflow: auto;
+	height: 86%;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	// margin-top: 40px;
+}
