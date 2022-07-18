@@ -7,10 +7,18 @@ import {
 import { AxiosInstance } from "axios";
 
 export const commentsService = ($api: AxiosInstance) => ({
-	async getComments({ limit, parent, post, skip }: IGetCommentsPayload) {
-		const parentParams = parent ? "&parent=" + parent : "";
+	async getComments({
+		limit,
+		parent,
+		post,
+		skip,
+		exclude,
+		sort,
+	}: IGetCommentsPayload) {
+		const parentParams = parent ? `&parent=${parent}` : "";
+		const excludeParams = exclude.length ? `&exclude=${exclude.join(";")}` : "";
 		const { data } = await $api.get<IFullCommentResponse[]>(
-			`comments/find?post=${post}&limit=${limit}&skip=${skip}${parentParams}`
+			`comments/find?post=${post}&limit=${limit}&skip=${skip}&sort=${sort}${parentParams}${excludeParams}`
 		);
 		return data;
 	},

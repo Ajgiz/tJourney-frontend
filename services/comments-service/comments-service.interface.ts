@@ -1,9 +1,12 @@
+import { SortCommentsType } from "../../components/pages/components/post/components/comments/comments.interface";
 import { IPersonInfo } from "../post-service/post-service.interface";
 export interface IGetCommentsPayload {
 	post: string;
 	limit: number;
 	parent: string | undefined;
 	skip: number;
+	exclude: string[];
+	sort: SortCommentsType;
 }
 
 export interface ICommentResponse {
@@ -29,6 +32,7 @@ export interface ICreateCommentPayload {
 }
 
 export interface ILikeResponse {
-	like: number;
-	dislike: number;
+	_id: string;
+	likes: string[];
+	dislikes: string[];
 }

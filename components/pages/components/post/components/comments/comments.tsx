@@ -57,11 +57,13 @@ export const Comments: React.FC<ICommentsProps> = ({
 	);
 	const handleCreateComment = async () => {
 		createComment();
+		setText("");
 	};
 
 	const handleSortComments = (sortType: SortCommentsType) => {
 		setSort(sortType);
-		const commentsCopy = comments.slice();
+		const commentsCopy = JSON.parse(JSON.stringify(comments));
+		console.log(commentsCopy);
 		handleSortHelper(commentsCopy, sortType);
 		setComments(commentsCopy);
 	};
@@ -74,16 +76,14 @@ export const Comments: React.FC<ICommentsProps> = ({
 			comments.sort((a, b) =>
 				sortType === "Популярные"
 					? b.likes.length - a.likes.length
-					: b.createdAt.localeCompare(a.createdAt) -
-					  a.createdAt.localeCompare(b.createdAt)
+					: b.createdAt.localeCompare(a.createdAt)
 			);
 			comments.forEach((el) => handleSortHelper(el, sortType));
 		} else {
 			comments.children.sort((a, b) =>
 				sortType === "Популярные"
 					? b.likes.length - a.likes.length
-					: b.createdAt.localeCompare(a.createdAt) -
-					  a.createdAt.localeCompare(b.createdAt)
+					: b.createdAt.localeCompare(a.createdAt)
 			);
 			comments.children.forEach((el) => handleSortHelper(el, sortType));
 		}
@@ -129,6 +129,7 @@ export const Comments: React.FC<ICommentsProps> = ({
 						{comments.map((c) => {
 							return (
 								<CommentItem
+									sort={sort}
 									comments={comments}
 									setComments={setComments}
 									selectedParent={parent}

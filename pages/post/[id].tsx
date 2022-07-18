@@ -15,6 +15,7 @@ interface IPostPage {
 }
 
 const FullPostPage: NextPage<IPostPage> = ({ post, error, comments }) => {
+	console.log(post, comments);
 	return (
 		<MainLayouts contentFullWidth hideComments>
 			{error && (
@@ -40,6 +41,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 			limit: 10,
 			post: id,
 			skip: 0,
+			exclude: [],
 		});
 
 		return {
