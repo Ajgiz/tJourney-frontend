@@ -7,38 +7,72 @@ import { Post } from "../components/pages/components/post/post";
 import { MainLayouts } from "../components/layouts/main-layouts";
 import { Api } from "../services/api";
 import { IFullPostResponse } from "../services/post-service/post-service.interface";
+import { Menu } from "../components/pages/components/menu/menu";
+import { IOptionMenu } from "../components/pages/components/menu/menu.interface";
+import { SortPostsType } from "../components/pages/home/index.interface";
+import { useFetch } from "../hooks/useFetch";
+import { LoaderOne } from "../components/loaders/loader-1";
 
 interface IHomeProps {
-	posts: IFullPostResponse[];
+	postsProps: IFullPostResponse[];
 	error?: string;
 }
 
-const Home: NextPage<IHomeProps> = ({ posts, error }) => {
-	const [newsCategory, setNewsCategory] = React.useState(
-		`${new Date().getDate()} июня`
+const Home: NextPage<IHomeProps> = ({ postsProps, error }) => {
+	const [posts, setPosts] = React.useState(postsProps);
+	const [limitPosts, setLimitPosts] = React.useState(15);
+	const [skipPosts, setSkipPosts] = React.useState(0);
+	const [sortPostsType, setSortPostsType] =
+		React.useState<SortPostsType>("Новые");
+	const [getSortedPosts, loadingPosts, errorPosts] = useFetch<SortPostsType>(
+		async (type) => {
+			const posts = await Api().post.searchPosts({
+				limit: limitPosts,
+				skip: skipPosts,
+				new: type === "Новые" ? -1 : undefined,
+				views: type === "Популярные" ? -1 : undefined,
+			});
+			setPosts(posts);
+		}
 	);
+
+	const handleSortPosts = (type: SortPostsType) => {
+		if (sortPostsType === type) return;
+		setSortPostsType(type);
+		getSortedPosts(type);
+	};
+
+	const optionsMenuSortPosts: IOptionMenu[] = [
+		{
+			func: () => handleSortPosts("Популярные"),
+			label: "Популярные",
+		},
+		{
+			func: () => handleSortPosts("Новые"),
+			label: "Новые",
+		},
+	];
 	return (
 		<div className="page">
 			<MainLayouts contentFullWidth={false} hideComments={false}>
 				<div className={styles.content}>
-					<Select
-						variant="outlined"
-						classes={{ outlined: styles.selectNewsCategory }}
-						onChange={(e) => setNewsCategory(e.target.value)}
-						value={newsCategory}
-					>
-						<MenuItem value="Все время">Все время</MenuItem>
-						<MenuItem value="Месяц">Месяц</MenuItem>
-						<MenuItem value={`${new Date().getDate()} июня`}>
-							{`${new Date().getDate()} июня`}
-						</MenuItem>
-					</Select>
+					<div className={styles.top}>
+						<Menu
+							arrowIcon
+							value={sortPostsType}
+							label={<p className={styles["menu-label"]}>{sortPostsType}</p>}
+							rootClassName={styles.sortTypeMenu}
+							options={optionsMenuSortPosts}
+						/>
+					</div>
+
 					<News />
-					{error && (
+					{[error, errorPosts].some((el) => el && true) && (
 						<Alert severity="error">
 							{typeof error === "string" ? error : "Неизвестная ошибка"}
 						</Alert>
 					)}
+					{loadingPosts && <LoaderOne />}
 					{posts &&
 						posts.map((post) => {
 							return <Post {...post} author={post.author} key={post._id} />;
@@ -51,9 +85,13 @@ const Home: NextPage<IHomeProps> = ({ posts, error }) => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	try {
-		const posts = await Api(ctx as any).post.getAll();
+		const postsProps = await Api(ctx as any).post.searchPosts({
+			limit: 15,
+			skip: 0,
+			new: -1,
+		});
 		return {
-			props: { posts },
+			props: { postsProps },
 		};
 	} catch (e: any) {
 		return {

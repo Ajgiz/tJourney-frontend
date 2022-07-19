@@ -29,3 +29,13 @@ export interface IPost {
 	body: OutputData["blocks"];
 	topic: string | null;
 }
+
+export interface IQuerySearchPosts {
+	title?: string;
+	body?: string;
+	views?: 1 | -1;
+	tags?: string;
+	limit: number;
+	skip: number;
+	new?: 1 | -1;
+}

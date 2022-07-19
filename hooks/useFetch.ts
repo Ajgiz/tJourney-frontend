@@ -1,15 +1,16 @@
 import React from "react";
-export const useFetch = (
-	callback: () => void
-): [() => void, boolean, string] => {
+
+export const useFetch = <T>(
+	callback: (arg?: T) => void
+): [(arg?: T) => void, boolean, string] => {
 	const [error, setError] = React.useState("");
 	const [loading, setLoding] = React.useState(false);
 
-	const fetch = () => {
+	const fetch = (arg?: T) => {
 		try {
 			setError("");
 			setLoding(true);
-			callback();
+			callback(arg);
 		} catch (e: any) {
 			setError(e);
 		} finally {

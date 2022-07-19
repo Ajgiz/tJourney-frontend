@@ -1,4 +1,5 @@
 import { AxiosInstance } from "axios";
+import { getQueryParams } from "../../components/common/helper-functions";
 import {
 	ICommunityResponse,
 	ICommunitySearchParams,
@@ -15,14 +16,9 @@ export const communityService = ($api: AxiosInstance) => ({
 		);
 		return data;
 	},
-	async search({ limit, skip, description, email }: ICommunitySearchParams) {
-		const searchParams = description
-			? `&description=${description}&title=${description}`
-			: "" + email
-			? `&email=${email}`
-			: "";
+	async search(query: ICommunitySearchParams) {
 		const { data } = await $api.get<ICommunityResponse[]>(
-			`communities/search?limit=${limit}&skip=${skip}${searchParams}`
+			`communities/search${getQueryParams(query)}`
 		);
 		return data;
 	},

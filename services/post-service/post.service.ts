@@ -1,14 +1,19 @@
+import { getQueryParams } from "./../../components/common/helper-functions";
 import { AxiosInstance } from "axios";
 import { ILikeResponse } from "../comments-service/comments-service.interface";
 import {
 	IFullPostResponse,
 	IPost,
 	IPostResponse,
+	IQuerySearchPosts,
 } from "./post-service.interface";
 
 export const postService = ($api: AxiosInstance) => ({
-	async getAll() {
-		const { data } = await $api.get<IFullPostResponse[]>("post");
+	async searchPosts(query: IQuerySearchPosts) {
+		console.log(getQueryParams(query));
+		const { data } = await $api.get<IFullPostResponse[]>(
+			`post/search${getQueryParams(query)}`
+		);
 		return data;
 	},
 	async savePost(post: IPost) {

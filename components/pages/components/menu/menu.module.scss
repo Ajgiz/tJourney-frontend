@@ -11,7 +11,10 @@
 	outline: none;
 	background-color: transparent;
 	color: black;
+	cursor: pointer;
 	font-size: 18px;
+	display: flex;
+	align-items: center;
 }
 .optionMenu {
 	cursor: pointer;
@@ -22,4 +25,7 @@
 }
 .selected {
 	background-color: darken($color: #fff, $amount: 8);
+}
+.rotate {
+	transform: rotate(180deg);
 }

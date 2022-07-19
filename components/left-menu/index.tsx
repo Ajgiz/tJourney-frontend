@@ -1,22 +1,23 @@
 import { Button } from "@mui/material";
 import React from "react";
 import styles from "./left-side.module.scss";
-import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartmentOutlined";
-import CollectionsBookmarkIcon from "@mui/icons-material/CollectionsBookmarkOutlined";
+import PopularPostsIcon from "@mui/icons-material/LocalFireDepartmentOutlined";
+import MyLentIcon from "@mui/icons-material/CollectionsBookmarkOutlined";
 import BookmarksIcon from "@mui/icons-material/BookmarksOutlined";
-import TrendingUpIcon from "@mui/icons-material/TrendingUpOutlined";
-import ChatBubbleIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import RatingIcon from "@mui/icons-material/TrendingUpOutlined";
+import ChatIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+import TimeIcon from "@mui/icons-material/AccessTime";
 import Link from "next/link";
 import { useRouter } from "next/router";
 const routes = [
 	{
-		text: "Популярное",
-		icon: <LocalFireDepartmentIcon />,
-		path: "/popular",
+		text: "Свежее",
+		icon: <PopularPostsIcon />,
+		path: "#popular",
 	},
 	{
 		text: "Моя лента",
-		icon: <CollectionsBookmarkIcon />,
+		icon: <MyLentIcon />,
 		path: "/mylent",
 	},
 	{
@@ -26,12 +27,12 @@ const routes = [
 	},
 	{
 		text: "Сообщения",
-		icon: <ChatBubbleIcon />,
+		icon: <ChatIcon />,
 		path: "/messages",
 	},
 	{
 		text: "Рейтинг TJ",
-		icon: <TrendingUpIcon />,
+		icon: <RatingIcon />,
 		path: "/rating",
 	},
 ];
@@ -47,7 +48,9 @@ export const LeftMenu = () => {
 								<Link href={el.path}>
 									<Button
 										href={el.path}
-										color={router.asPath === el.path ? "secondary" : "primary"}
+										color={
+											router.pathname === el.path ? "secondary" : "primary"
+										}
 										variant={router.asPath === el.path ? "contained" : "text"}
 									>
 										{el.icon}

@@ -5,6 +5,7 @@ export interface IMenuProps {
 	label: any;
 	value?: string;
 	body?: any;
+	arrowIcon?: boolean;
 }
 
 export interface IOptionMenu {
