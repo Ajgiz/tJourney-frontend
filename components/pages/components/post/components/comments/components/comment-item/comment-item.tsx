@@ -16,6 +16,7 @@ import { CustomInput } from "../../../../../../setting/input/input";
 import { InputResponse } from "./input/input";
 import { ICommentState } from "../../comments.interface";
 import { useFetch } from "../../../../../../../../hooks/useFetch";
+import { getLikesAndDislikesPost } from "../../../../../../../common/helper-functions";
 
 export const CommentItem: React.FC<ICommentItemProps> = ({
 	_id,
@@ -46,10 +47,7 @@ export const CommentItem: React.FC<ICommentItemProps> = ({
 	const handleFetchLike = async () => {
 		const comment = await Api().comment.likePost(_id);
 		likeDislikeComment(comment._id, "like", comment.likes);
-		return {
-			likes: comment.likes.length,
-			dislikes: comment.dislikes.length,
-		};
+		return getLikesAndDislikesPost(comment);
 	};
 
 	const updateNestedComments = (func: (comments: ICommentState) => void) => {
@@ -115,10 +113,7 @@ export const CommentItem: React.FC<ICommentItemProps> = ({
 	const handleFetchDislike = async () => {
 		const comment = await Api().comment.dislikePost(_id);
 		likeDislikeComment(comment._id, "dislike", comment.dislikes);
-		return {
-			likes: comment.likes.length,
-			dislikes: comment.dislikes.length,
-		};
+		return getLikesAndDislikesPost(comment);
 	};
 
 	const handleGetSubComments = async () => {

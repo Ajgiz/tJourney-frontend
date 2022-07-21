@@ -1,6 +1,6 @@
 import { IFullCommentResponse } from "../../../../../../services/comments-service/comments-service.interface";
 
-export type SortCommentsType = "Популярные" | "Последние";
+export type SortType = "popular" | "new";
 
 export interface ICommentState extends IFullCommentResponse {
 	children: ICommentState[];

@@ -8,3 +8,8 @@ export interface ILikeProps {
 	likes: number;
 	dislikes: number;
 }
+
+export interface ILikePayload {
+	likes: string[];
+	dislikes: string[];
+}

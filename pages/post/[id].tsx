@@ -15,7 +15,6 @@ interface IPostPage {
 }
 
 const FullPostPage: NextPage<IPostPage> = ({ post, error, comments }) => {
-	console.log(post, comments);
 	return (
 		<MainLayouts contentFullWidth hideComments>
 			{error && (
@@ -36,14 +35,17 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 	try {
 		const id = ctx?.params?.id as string;
 		const post = await Api(ctx as any).post.getPost(id);
+
 		const comments = await Api(ctx as any).comment.getComments({
 			parent: undefined,
 			limit: 10,
 			post: id,
 			skip: 0,
 			exclude: [],
+			sort: "new",
 		});
-
+		console.log("HEREREREREFRERE");
+		console.log(comments);
 		return {
 			props: {
 				post,
@@ -51,6 +53,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 			},
 		};
 	} catch (e) {
+		console.log(e);
 		return {
 			props: {
 				error: "internal server error",

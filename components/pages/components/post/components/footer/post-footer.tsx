@@ -8,6 +8,7 @@ import { Api } from "../../../../../../services/api";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { Like } from "../../../like/like";
+import { getLikesAndDislikesPost } from "../../../../../common/helper-functions";
 
 export interface IPostFooterProps {
 	likes: number;
@@ -23,18 +24,15 @@ export const PostFooter: React.FC<IPostFooterProps> = ({
 	commentsCount = 0,
 }) => {
 	const router = useRouter();
-	const [likeCount, setLikeCount] = React.useState(likes - dislikes);
-	const [setLike, likeLoading, likeError] = useFetch(async () => {
-		const data = await Api().post.likePost(id);
-		setLikeCount(data.like - data.dislike);
-	});
 
 	const fetchDislike = async () => {
-		return await Api().post.dislikePost(id);
+		const post = await Api().post.dislikePost(id);
+		return getLikesAndDislikesPost(post);
 	};
 
 	const fetchLike = async () => {
-		return await Api().post.likePost(id);
+		const post = await Api().post.likePost(id);
+		return getLikesAndDislikesPost(post);
 	};
 
 	const commentLabel = (

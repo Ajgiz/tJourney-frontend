@@ -8,8 +8,8 @@ export interface ICommunityResponse {
 	title: string;
 	_id: string;
 	description: string;
-	cover?: string;
+	cover: string;
 	subscribers: string[];
-	avatar?: string;
+	avatar: string;
 	author: string;
 }

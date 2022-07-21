@@ -19,11 +19,8 @@ import { useFetch } from "../../../../../../hooks/useFetch";
 import { Api } from "../../../../../../services/api";
 import { useAppSelector } from "../../../../../../redux/hooks";
 import { selectIsAuth } from "../../../../../../redux/slices/user/user.slice";
-import {
-	ICommentsProps,
-	ICommentState,
-	SortCommentsType,
-} from "./comments.interface";
+import { ICommentsProps, ICommentState, SortType } from "./comments.interface";
+import { convertToRightValueMenu } from "../../../../../common/helper-functions";
 
 export const Comments: React.FC<ICommentsProps> = ({
 	postId,
@@ -31,20 +28,21 @@ export const Comments: React.FC<ICommentsProps> = ({
 }) => {
 	const isAuth = useAppSelector(selectIsAuth);
 	const [text, setText] = React.useState("");
-	const [sort, setSort] = React.useState<SortCommentsType>("Последние");
+	const [sort, setSort] = React.useState<SortType>("new");
 	const [parent, setParent] = React.useState<null | string>(null);
 	const [comments, setComments] =
 		React.useState<ICommentState[]>(commentsProps);
 	const ELEMENTS_MENU: IOptionMenu[] = [
 		{
 			label: "Популярные",
-			func: () => handleSortComments("Популярные"),
+			func: () => handleSortComments("popular"),
 		},
 		{
 			label: "Последние",
-			func: () => handleSortComments("Последние"),
+			func: () => handleSortComments("new"),
 		},
 	];
+
 	const [createComment, loadingCreate, errorCreateComment] = useFetch(
 		async () => {
 			const comment = await Api().comment.create({
@@ -60,28 +58,27 @@ export const Comments: React.FC<ICommentsProps> = ({
 		setText("");
 	};
 
-	const handleSortComments = (sortType: SortCommentsType) => {
+	const handleSortComments = (sortType: SortType) => {
 		setSort(sortType);
 		const commentsCopy = JSON.parse(JSON.stringify(comments));
-		console.log(commentsCopy);
 		handleSortHelper(commentsCopy, sortType);
 		setComments(commentsCopy);
 	};
 
 	const handleSortHelper = (
 		comments: ICommentState[] | ICommentState,
-		sortType: SortCommentsType
+		sortType: SortType
 	) => {
 		if (Array.isArray(comments)) {
 			comments.sort((a, b) =>
-				sortType === "Популярные"
+				sortType === "popular"
 					? b.likes.length - a.likes.length
 					: b.createdAt.localeCompare(a.createdAt)
 			);
 			comments.forEach((el) => handleSortHelper(el, sortType));
 		} else {
 			comments.children.sort((a, b) =>
-				sortType === "Популярные"
+				sortType === "new"
 					? b.likes.length - a.likes.length
 					: b.createdAt.localeCompare(a.createdAt)
 			);
@@ -112,7 +109,7 @@ export const Comments: React.FC<ICommentsProps> = ({
 							{comments?.length} комментариев
 						</Typography>
 						<Menu
-							value={sort}
+							value={convertToRightValueMenu(sort)}
 							label={<FormatLineSpacingIcon sx={{ cursor: "pointer" }} />}
 							options={ELEMENTS_MENU}
 						/>

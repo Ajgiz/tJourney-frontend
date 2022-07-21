@@ -5,8 +5,10 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import styles from "../../styles/profile-setting.module.scss";
 import { CustomInput } from "../../components/pages/setting/input/input";
 import { SelectSetting } from "../../components/pages/setting/select/select";
+import { useRouter } from "next/router";
 
 const Settings = () => {
+	const router = useRouter();
 	const [status, setStatus] = React.useState("show");
 	const [description, setDescription] = React.useState("");
 	const [name, setName] = React.useState("Ajgiz Usmanov");
@@ -15,6 +17,7 @@ const Settings = () => {
 		<MainLayouts hideComments contentFullWidth={false}>
 			<Paper sx={{ padding: "20px" }} elevation={0}>
 				<Typography
+					onClick={() => router.back()}
 					sx={{
 						fontSize: "16px",
 						color: "#000000a6",

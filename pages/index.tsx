@@ -12,6 +12,8 @@ import { IOptionMenu } from "../components/pages/components/menu/menu.interface"
 import { SortPostsType } from "../components/pages/home/index.interface";
 import { useFetch } from "../hooks/useFetch";
 import { LoaderOne } from "../components/loaders/loader-1";
+import { SortType } from "../components/pages/components/post/components/comments/comments.interface";
+import { convertToRightValueMenu } from "../components/common/helper-functions";
 
 interface IHomeProps {
 	postsProps: IFullPostResponse[];
@@ -22,21 +24,20 @@ const Home: NextPage<IHomeProps> = ({ postsProps, error }) => {
 	const [posts, setPosts] = React.useState(postsProps);
 	const [limitPosts, setLimitPosts] = React.useState(15);
 	const [skipPosts, setSkipPosts] = React.useState(0);
-	const [sortPostsType, setSortPostsType] =
-		React.useState<SortPostsType>("Новые");
-	const [getSortedPosts, loadingPosts, errorPosts] = useFetch<SortPostsType>(
+	const [sortPostsType, setSortPostsType] = React.useState<SortType>("new");
+	const [getSortedPosts, loadingPosts, errorPosts] = useFetch<SortType>(
 		async (type) => {
 			const posts = await Api().post.searchPosts({
 				limit: limitPosts,
 				skip: skipPosts,
-				new: type === "Новые" ? -1 : undefined,
-				views: type === "Популярные" ? -1 : undefined,
+				new: type === "new" ? -1 : undefined,
+				views: type === "popular" ? -1 : undefined,
 			});
 			setPosts(posts);
 		}
 	);
 
-	const handleSortPosts = (type: SortPostsType) => {
+	const handleSortPosts = (type: SortType) => {
 		if (sortPostsType === type) return;
 		setSortPostsType(type);
 		getSortedPosts(type);
@@ -44,11 +45,11 @@ const Home: NextPage<IHomeProps> = ({ postsProps, error }) => {
 
 	const optionsMenuSortPosts: IOptionMenu[] = [
 		{
-			func: () => handleSortPosts("Популярные"),
+			func: () => handleSortPosts("popular"),
 			label: "Популярные",
 		},
 		{
-			func: () => handleSortPosts("Новые"),
+			func: () => handleSortPosts("new"),
 			label: "Новые",
 		},
 	];
@@ -59,8 +60,12 @@ const Home: NextPage<IHomeProps> = ({ postsProps, error }) => {
 					<div className={styles.top}>
 						<Menu
 							arrowIcon
-							value={sortPostsType}
-							label={<p className={styles["menu-label"]}>{sortPostsType}</p>}
+							value={convertToRightValueMenu(sortPostsType)}
+							label={
+								<p className={styles["menu-label"]}>
+									{convertToRightValueMenu(sortPostsType)}
+								</p>
+							}
 							rootClassName={styles.sortTypeMenu}
 							options={optionsMenuSortPosts}
 						/>

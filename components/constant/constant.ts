@@ -46,3 +46,6 @@ export const MockCommentsLeftMenu: ILeftMenuCommentItemProps[] = [
 
 export const MOCK_AVATAR =
 	"https://leonardo.osnova.io/db2809a7-e775-54ab-8f85-16c2b474f29e/-/scale_crop/64x64/";
+
+export const MOCK_IMAGE =
+	"https://leonardo.osnova.io/aa08c3bd-0d34-5626-9986-7f06f5bedd24/-/scale_crop/108x108/-/format/webp/";

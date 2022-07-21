@@ -1,4 +1,4 @@
-import { SortCommentsType } from "../../components/pages/components/post/components/comments/comments.interface";
+import { SortType } from "../../components/pages/components/post/components/comments/comments.interface";
 import { IPersonInfo } from "../post-service/post-service.interface";
 export interface IGetCommentsPayload {
 	post: string;
@@ -6,7 +6,7 @@ export interface IGetCommentsPayload {
 	parent: string | undefined;
 	skip: number;
 	exclude: string[];
-	sort: SortCommentsType;
+	sort: SortType;
 }
 
 export interface ICommentResponse {

@@ -5,7 +5,7 @@ import {
 	MAX_AGE_REFRESH_TOKEN,
 } from "../../redux/slices/user/constant";
 import { IAuthResponse } from "../auth-service/auth-service.interface";
-import { IUserResponse } from "./user-service.interface";
+import { IFullUserResponse, IUserResponse } from "./user-service.interface";
 
 export const userService = ($api: AxiosInstance) => ({
 	async refresh(token: string, ctx?: any) {
@@ -25,7 +25,12 @@ export const userService = ($api: AxiosInstance) => ({
 		return data;
 	},
 	async getMe() {
-		const { data } = await $api.get<IUserResponse>("user/me/profile");
+		const { data } = await $api.get<IFullUserResponse>("user/me/profile");
+		return data;
+	},
+
+	async getMeSubcribersBlogs() {
+		const { data } = await $api.get<IUserResponse[]>("user/me/subscribe");
 		return data;
 	},
 });

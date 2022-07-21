@@ -57,6 +57,5 @@ export const userSlice = createSlice({
 	},
 });
 
-// export const {} = userSlice.actions;
 export const selectIsAuth = (state: AppState) => state.user.isAuth;
 export default userSlice.reducer;

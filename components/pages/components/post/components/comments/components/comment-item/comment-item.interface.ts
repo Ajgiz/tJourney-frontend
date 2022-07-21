@@ -1,10 +1,10 @@
-import { ICommentState, SortCommentsType } from "../../comments.interface";
+import { ICommentState, SortType } from "../../comments.interface";
 import { IFullCommentResponse } from "./../../../../../../../../services/comments-service/comments-service.interface";
 export interface ICommentItemProps extends IFullCommentResponse {
 	setParent: (v: string | null) => void;
 	selectedParent: string | null;
 	children: ICommentState[];
-	sort: SortCommentsType;
+	sort: SortType;
 	comments: ICommentState[];
 	setComments: React.Dispatch<React.SetStateAction<ICommentState[]>>;
 }
